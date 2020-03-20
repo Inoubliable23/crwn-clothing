@@ -29,7 +29,9 @@ class SignUp extends Component {
 		try {
 			const { user } = await auth.createUserWithEmailAndPassword(email, password);
 
-			await createUserProfileDocument(user, displayName);
+			await createUserProfileDocument(user, {
+				displayName: displayName
+			});
 
 			this.setState({
 				displayName: '',
@@ -40,6 +42,8 @@ class SignUp extends Component {
 
 		} catch (error) {
 			console.error(error);
+
+			alert(error.message);
 		}
 	}
 	
