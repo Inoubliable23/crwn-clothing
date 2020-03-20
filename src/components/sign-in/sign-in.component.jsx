@@ -11,8 +11,8 @@ class SignIn extends Component {
 		super(props);
 	
 		this.state = {
-			 email: '',
-			 password: ''
+			email: '',
+			password: ''
 		}
 	}
 	
@@ -34,6 +34,7 @@ class SignIn extends Component {
 	}
 
 	render() {
+		const { email, password } = this.state;
 		return (
 			<div className="sign-in">
 				<h2>I already have an account</h2>
@@ -44,7 +45,7 @@ class SignIn extends Component {
 						type="email"
 						name="email"
 						label="Email"
-						value={this.state.email}
+						value={email}
 						handleChange={this.handleChange}
 						required
 					/>
@@ -52,7 +53,7 @@ class SignIn extends Component {
 						type="password"
 						name="password"
 						label="Password"
-						value={this.state.password}
+						value={password}
 						handleChange={this.handleChange}
 						required
 					/>
