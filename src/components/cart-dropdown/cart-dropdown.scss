@@ -14,7 +14,18 @@
   .cart-items {
     height: 240px;
     display: flex;
-    flex-direction: column;
+		flex-direction: column;
+		overflow-y: auto;
+
+		&::-webkit-scrollbar {
+			width: 8px;
+		}
+		 
+		&::-webkit-scrollbar-thumb {
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			background: rgba(80, 80, 80, 1);
+		}
   }
 
   button {
