@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './sign-up.scss';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { Title, SignUpContainer } from './sign-up.styles';
 
 class SignUp extends Component {
 
@@ -58,13 +58,10 @@ class SignUp extends Component {
 	render() {
 		const { displayName, email, password, confirmPassword } = this.state;
 		return (
-			<div className="sign-up">
-				<h2 className="title">I do not have an account</h2>
+			<SignUpContainer>
+				<Title>I do not have an account</Title>
 				<span>Sign up with your email and password</span>
-				<form
-					className="sign-up-form"
-					onSubmit={this.handleSubmit}
-				>
+				<form onSubmit={this.handleSubmit}>
 					<FormInput
 						type="text"
 						name="displayName"
@@ -97,11 +94,11 @@ class SignUp extends Component {
 						handleChange={this.handleChange}
 						required
 					/>
-					<div className="buttons">
+					<div>
 						<CustomButton type="submit">Sign up</CustomButton>
 					</div>
 				</form>
-			</div>
+			</SignUpContainer>
 		)
 	}
 }
