@@ -3,13 +3,16 @@ import { createSelector } from 'reselect';
 export const selectCollections = state => state.shop.collections;
 
 export const selectCollectionsForPreview = state => {
-	return Object.keys(state.shop.collections)
-		.map(key => state.shop.collections[key]);
+	const collections = selectCollections(state);
+	return collections ?
+		Object.keys(collections).map(key => collections[key])
+		:
+		[];
 };
 
 export const selectCollection = collectionUrlParam => (
 	createSelector(
 		[selectCollections],
-		collections => collections[collectionUrlParam]
+		collections => collections ? collections[collectionUrlParam] : null
 	)
 );

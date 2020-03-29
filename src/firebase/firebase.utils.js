@@ -12,6 +12,17 @@ const config = {
 	appId: "1:169175677382:web:8c2da3409632b131f2dac7"
 }
 
+firebase.initializeApp(config);
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({
+	prompt: 'select_account'
+});
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
 	if (!userAuth) return;
 
@@ -37,15 +48,33 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 	return userRef;
 }
 
-firebase.initializeApp(config);
+export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
+	const collectionRef = firestore.collection(collectionKey);
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+	const batch = firestore.batch();
+	objectsToAdd.forEach(obj => {
+		const newDocRef = collectionRef.doc();
+		batch.set(newDocRef, obj);
+	});
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({
-	prompt: 'select_account'
-});
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+	return batch.commit();
+}
+
+export const convertCollectionSnapshotToMap = collections => {
+	const transformedCollection = {};
+	
+	collections.docs.forEach(doc => {
+		const { title, items } = doc.data();
+
+		transformedCollection[title.toLowerCase()] = {
+			id: doc.id,
+			routeName: encodeURI(title.toLowerCase()),
+			title,
+			items
+		}
+	});
+
+	return transformedCollection;
+}
 
 export default firebase;
