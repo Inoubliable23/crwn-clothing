@@ -6,7 +6,11 @@ export const CheckoutPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px auto 0;
+	margin: 50px auto 0;
+	
+	@media screen and (max-width: 800px) {
+  	width: 90%;
+	}
 `
 
 export const CheckoutHeader = styled.div`
@@ -15,6 +19,10 @@ export const CheckoutHeader = styled.div`
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 1px solid darkgrey;
+	
+	@media screen and (max-width: 800px) {
+  	text-align: center;
+	}
 `
 
 export const HeaderBlock = styled.div`
@@ -37,6 +45,10 @@ export const TestWarning = styled.div`
 	margin-top: 40px;
 	font-size: 24px;
 	color: red;
+	
+	@media screen and (max-width: 800px) {
+  	font-size: 22px;
+	}
 `
 
 export const StripeButtonContainer = styled.div`

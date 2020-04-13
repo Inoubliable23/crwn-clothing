@@ -16,6 +16,11 @@ export const AddButton = styled(CustomButton)`
 	position: absolute;
 	top: 255px;
 	display: none;
+
+	@media screen and (max-width: 800px) {
+		display: block;
+		top: 200px;
+	}
 `
 
 export const CollectionItemContainer = styled.div`
@@ -36,6 +41,11 @@ export const CollectionItemContainer = styled.div`
 			display: block;
 		}
 	}
+
+	@media screen and (max-width: 800px) {
+  	width: 45VW;
+  	height: 290px;
+	}
 `
 
 export const CollectionFooter = styled.div`
@@ -49,8 +59,16 @@ export const CollectionFooter = styled.div`
 
 export const Name = styled.div`
 	width: 90%;
+
+	@media screen and (max-width: 800px) {
+		width: 80%;
+	}
 `
 
 export const Price = styled.div`
 	width: 10%;
+
+	@media screen and (max-width: 800px) {
+		width: 20%;
+	}
 `

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -8,15 +7,15 @@ import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
-import { OptionLink, OptionsContainer, HeaderContainer } from './header.styles';
+import { OptionLink, OptionsContainer, HeaderContainer, LogoContainer } from './header.styles';
 import { signOutStart } from '../../redux/user/user.actions';
 
 const Header = ({ currentUser, hidden, signOutStart }) => {
 	return (
 		<HeaderContainer>
-			<Link to="/">
+			<LogoContainer to="/">
 				<Logo />
-			</Link>
+			</LogoContainer>
 			<OptionsContainer>
 				<OptionLink to="/shop">
 					SHOP

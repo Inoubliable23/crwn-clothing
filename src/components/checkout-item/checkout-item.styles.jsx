@@ -31,10 +31,18 @@ export const Name = styled.span`
 export const Quantity = styled.span`
 	${commonWidth}
 	display: flex;
+	
+	@media screen and (max-width: 800px) {
+		justify-content: center;
+	}
 `
 
 export const Price = styled.span`
 	${commonWidth}
+	
+	@media screen and (max-width: 800px) {
+		text-align: center;
+	}
 `
 
 export const Arrow = styled.div`
@@ -48,4 +56,8 @@ export const Value = styled.span`
 export const RemoveButton = styled.div`
 	padding-left: 12px;
   cursor: pointer;
+	
+	@media screen and (max-width: 800px) {
+		padding-left: 0;
+	}
 `
